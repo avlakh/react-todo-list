@@ -1,0 +1,23 @@
+.task-header {
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem 0;
+	text-align: center;
+	background-color: lightblue;
+	border-radius: 1.5rem;
+}
+
+.task-header * {
+	flex-basis: 25%;
+}
+
+h1 {
+	text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+	.task-header {
+		display: none;
+	}
+
+}
