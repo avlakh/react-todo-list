@@ -4,11 +4,7 @@ const ListItem = (props) => {
 	const finishedTaskClasses =
 		props.status === 'Finished' ? styles['finished-task'] : '';
 	return (
-		<div
-			className={`${styles.task} ${
-				props.status === 'Finished' ? styles.tasked : ''
-			}`}
-		>
+		<div className={styles.task}>
 			<h3 className={finishedTaskClasses}>{props.summary}</h3>
 			<p className={finishedTaskClasses}>{props.descr}</p>
 			<h4 className={finishedTaskClasses}>{props.status}</h4>

@@ -4,8 +4,7 @@ import ListItem from './ListItem';
 import Container from '../UI/Container';
 
 const List = () => {
-	const { tasks, removeTask, changeTaskStatus, isChangeStatusButtonClicked } =
-		useTasks();
+	const { tasks, removeTask, changeTaskStatus } = useTasks();
 
 	const taskListWithItems = (
 		<>

@@ -12,8 +12,6 @@ export const useTasks = () => useContext(TaskContext);
 
 const TaskProvider = (props) => {
 	const [tasks, setTasks] = useState(initialState);
-	const [isChangeStatusButtonClicked, setIsChangeStatusButtonClicked] =
-		useState(false);
 
 	useEffect(() => {
 		localStorage.getItem('tasks', JSON.stringify(tasks));
@@ -55,7 +53,6 @@ const TaskProvider = (props) => {
 				addTask,
 				removeTask,
 				changeTaskStatus,
-				isChangeStatusButtonClicked,
 			}}
 		>
 			{props.children}
