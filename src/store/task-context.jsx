@@ -12,6 +12,8 @@ export const useTasks = () => useContext(TaskContext);
 
 const TaskProvider = (props) => {
 	const [tasks, setTasks] = useState(initialState);
+	const [isChangeStatusButtonClicked, setIsChangeStatusButtonClicked] =
+		useState(false);
 
 	useEffect(() => {
 		localStorage.getItem('tasks', JSON.stringify(tasks));
@@ -29,8 +31,33 @@ const TaskProvider = (props) => {
 		localStorage.setItem('tasks', JSON.stringify(newTaskList));
 	};
 
+	const changeTaskStatus = (id) => {
+		const mappedTasks = tasks.map((task) => {
+			const isIdCorrect = task.id === id;
+			if (isIdCorrect && task.status === 'To do') {
+				return { ...task, status: 'In progress' };
+			} else if (isIdCorrect && task.status === 'In progress') {
+				return { ...task, status: 'Finished' };
+			} else if (isIdCorrect && task.status === 'Finished') {
+				return { ...task, status: 'To do' };
+			} else {
+				return task;
+			}
+		});
+		setTasks(mappedTasks);
+		localStorage.setItem('tasks', JSON.stringify(mappedTasks));
+	};
+
 	return (
-		<TaskContext.Provider value={{ tasks, addTask, removeTask }}>
+		<TaskContext.Provider
+			value={{
+				tasks,
+				addTask,
+				removeTask,
+				changeTaskStatus,
+				isChangeStatusButtonClicked,
+			}}
+		>
 			{props.children}
 		</TaskContext.Provider>
 	);

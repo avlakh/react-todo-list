@@ -4,7 +4,8 @@ import ListItem from './ListItem';
 import Container from '../UI/Container';
 
 const List = () => {
-	const { tasks, removeTask } = useTasks();
+	const { tasks, removeTask, changeTaskStatus, isChangeStatusButtonClicked } =
+		useTasks();
 
 	const taskListWithItems = (
 		<>
@@ -21,6 +22,7 @@ const List = () => {
 					descr={task.descr}
 					status={task.status}
 					onRemove={() => removeTask(task.id)}
+					onStatusChange={() => changeTaskStatus(task.id)}
 				/>
 			))}
 		</>
